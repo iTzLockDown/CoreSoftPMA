@@ -29,12 +29,12 @@ export class FormComponent implements OnInit {
       });
   }
 
-  public create(): void {
+  create(): void {
     this.usuarioService.create(this.usuarios)
       .subscribe(
         json => {
           this.router.navigate(['/usuarios'])
-          Swal.fire('Nuevo usuarios ', `${json.nombre} creado con exito`, 'success'); },
+          Swal.fire('Nuevo usuario ', `${json.mensaje}: ${json.usuario.nombre}`, 'success'); },
         err => {
           this.errores = err.error.errors as string[];
         }
@@ -44,7 +44,7 @@ export class FormComponent implements OnInit {
     this.usuarioService.update(this.usuarios).subscribe(
       json => {
         this.router.navigate(['/usuarios'])
-        Swal.fire('Usuario Actualizado', `${json.nombre}: con exito`, 'success');
+        Swal.fire('Usuario Actualizado', `${json.mensaje}: ${json.usuario.nombre}`, 'success');
       },
       err => {
         this.errores = err.error.errors as string[];

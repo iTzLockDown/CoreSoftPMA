@@ -23,10 +23,10 @@
           <td>
             <a href="basic_table.html#">{{usuario.id}}</a>
           </td>
-          <td class="hidden-phone">{{usuario.apellidop}} {{ usuario.apellidom}}, {{usuario.nombre}}</td>
+          <td class="hidden-phone">{{usuario.apellidoPaterno | uppercase}} {{ usuario.apellidoMaterno | uppercase}}, {{usuario.nombre}}</td>
           <td>{{usuario.email}}</td>
           <td>{{usuario.documentoIdentidad}}</td>
-          <td>{{usuario.fechaRegistro}}</td>
+          <td>{{usuario.fechaRegistro | date:"EEEE dd, MMMM yyyy"}}</td>
           <td>
             <button class="btn btn-primary btn-xs" [routerLink]="['/usuarios/form', usuario.id]"><i class="fa fa-pencil"></i></button>
             <button class="btn btn-danger btn-xs" (click)='delete(usuario)'><i class="fa fa-trash-o "></i></button>
@@ -34,6 +34,7 @@
         </tr>
         </tbody>
       </table>
+      <paginator-nav *ngIf="paginador"  [paginador] = "paginador"></paginator-nav>
     </div>
     <!-- /content-panel -->
   </div>
